@@ -1,3 +1,5 @@
+#importion libraries 
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,20 +8,27 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from scipy import stats
 from scipy.stats import linregress 
-#
+#reading the dataset
 sea=pd.read_csv("epa-sea-level.csv")
+#taking a look 
 sea.head()
 sea.describe()
-#
+
+#boxplot of the sea lebel rise
 sea["CSIRO Adjusted Sea Level"].plot(kind="box",figsize=(10,7))
-#
+
+#line plot of the sea level rise throught the years
+
 plt.figure(figsize=(10,7))
 sns.regplot(x=sea["Year"],y=sea["CSIRO Adjusted Sea Level"])
 plt.show()
-#
+
+#line plot of the noaa sea level
+
 plt.figure(figsize=(10,7))
 sns.regplot(x=sea["Year"],y=sea["NOAA Adjusted Sea Level"])
 plt.show()
+
 #
 stats.linregress(x=sea["Year"],y=sea["CSIRO Adjusted Sea Level"])
 #
